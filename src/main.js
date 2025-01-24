@@ -1,19 +1,29 @@
 // Code Practice: Beyond Orthogonal
 // Name:
-// Date: 
+// Date:
 
 // Spritesheet by ElvGames: https://elv-games.itch.io/free-fantasy-dreamland-sprites
 
-"use strict"
+import Movement from './Movement.js'
 
 let config = {
     type: Phaser.AUTO,
     width: 800,
     height: 800,
-    scene: [ Movement ]
+    render: {
+        pixelArt: true,
+    },
+    fps: { forceSetTimeOut: true, target: 60 },
+    scene: [Movement],
+    physics: {
+        default: 'arcade',
+        fps: 60,
+    },
+
 }
 
 let game = new Phaser.Game(config)
 
-let cursors
-let { height, width } = game.config
+globalThis.cursors = null
+globalThis.width = game.config.width
+globalThis.height = game.config.height
